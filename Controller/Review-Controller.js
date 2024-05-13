@@ -1,8 +1,13 @@
 const Review = require('../models/reviewSchema.js')
 const  Rating  = require("../models/ratingSchema.js");
 
-const getReview = async (req, res) => {
-    res.json("hello");
+const getSomeReview = async (req, res) => {
+    try{
+        const review=await Review.find().limit(5);
+        return res.status(201).json({review})
+    }catch(err){
+        console.log(err.message)
+    }
 };
 
 const postReview = async (req, res) => {
@@ -43,16 +48,29 @@ const postReview = async (req, res) => {
 };
 const getParticularReview = async (req, res) => {
     try {
-        const { region } = req.body;
+        const { region } = req.params;
+        const {page,perPage}=req.body;
         // Handle getting particular review based on region
+        // if(!perPage){
+        //     perPage=5;
+        // }
+        const reqPage=parseInt(page)
+        const reqPerPage=parseInt(perPage)
+        const rating=await Rating.findOne({region})
+        
+        const startIndex=(reqPage-1)*reqPerPage;
+        // const endIndex=startIndex+reqPerPage;
+        // const resultData=review.slice(startIndex,endIndex);
+        const review=await Review.find({rating:rating._id}).skip(startIndex).limit(reqPerPage)
+        return res.status(201).json(review)
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: "Error in getting particular review" });
+        console.error(err.message);
+        res.status(500).json({ message: "Error in getting particular review" ,error:err.message});
     }
 };
 
 module.exports = {
-    getReview,
+    getSomeReview,
     postReview,
     getParticularReview
 };
