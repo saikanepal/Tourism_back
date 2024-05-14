@@ -6,8 +6,13 @@ const contactSchema = new Schema({
     email: { type: String },
     country: { type: String },
     contactNumber: { type: Number },
-
-});
+    arrivalDate: { type: Date },
+    departureDate: { type: Date },
+    requirements: { type: String }
+},
+    {
+        timestamps: true
+    });
 
 const Contact = mongoose.model('Contact', contactSchema);
 

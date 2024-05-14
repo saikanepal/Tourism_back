@@ -1,11 +1,9 @@
 const Contact = require("../models/contactSchema");
-const contactSchema = require("../models/contactSchema");
 
 const postContactDetails = async (req, res) => {
     try {
-        const { name, email, country, contactNumber } = req.body;
-
-        const newContact = new Contact({ name, email, country, contactNumber })
+        const { name, email, country, contactNumber, arrivalDate, departureDate, requirements } = req.body;
+        const newContact = new Contact({ name, email, country, contactNumber, arrivalDate, departureDate, requirements })
         await newContact.save()
 
         res.status(200).json(newContact);
