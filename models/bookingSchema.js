@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const contactSchema = new Schema({
+const bookingSchema = new Schema({
     name: { type: String },
     email: { type: String },
     country: { type: String },
     contactNumber: { type: Number },
-    arrivalDate: { type: Date },
-    departureDate: { type: Date },
+    arrivalDate: { type: String, },
+    departureDate: { type: String },
     requirements: { type: String }
 },
     {
         timestamps: true
     });
 
-const Contact = mongoose.model('Contact', contactSchema);
+const Booking = mongoose.model('Booking', bookingSchema);
 
-module.exports = Contact;
+module.exports = Booking;
