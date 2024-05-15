@@ -33,6 +33,6 @@ mongoose
 
 //routes here
 app.use('/api/review', ReviewRouter);
-app.use('/api/contact', BookingRouter);
+app.use('/api/booking', BookingRouter);
 app.use('/api/sample', sampleRoute); // for a practical project would be more like , /api/user , /api/posts , /api/messages
 
