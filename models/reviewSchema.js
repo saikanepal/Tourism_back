@@ -4,7 +4,7 @@ const Rating = require('./ratingSchema');
 const reviewSchema = new Schema({
     name: { type: String },
     personalRating: { type: Number },
-    rating: { type: Schema.Types.ObjectId, ref: 'Rating',index: true },
+    rating: { type: Schema.Types.ObjectId, ref: 'Rating', index: true },
     description: { type: String }
 });
 
