@@ -7,7 +7,7 @@ const cors = require('cors');
 //IMPORT ROUTES HERE
 const sampleRoute = require('./Routes/Sample-Routes');
 const ReviewRouter = require('./Routes/ReviewRoutes');
-const AdminRouter = require('./Routes/adminRoutes');
+const BookingRouter = require('./Routes/BookingRoutes');
 
 //Server configuratiion
 const app = express();
@@ -32,7 +32,6 @@ mongoose
     });
 
 //routes here
-app.use('/api/review', ReviewRouter);
-app.use('/api/admin', AdminRouter);
+app.use('/api/review',ReviewRouter);
 app.use('/api/sample', sampleRoute); // for a practical project would be more like , /api/user , /api/posts , /api/messages
 
