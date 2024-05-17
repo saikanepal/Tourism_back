@@ -20,12 +20,25 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB connection
+// mongoose
+//   .connect(process.env.DB_URL)
+//   .then(() => {
+//     console.log("MongoDB connected successfully");
+//     // Start the server only when MongoDB connection is successful
+//     app.listen(8000, () => {
+//       console.log(`Server is running on port ${PORT}`);
+//     });
+//   })
+//   .catch((error) => {
+//     console.error("MongoDB connection error:", error);
+//   });
+
 mongoose
-  .connect(process.env.DB_URL)
+  .connect("mongodb://127.0.0.1:27017/trekking")
   .then(() => {
     console.log("MongoDB connected successfully");
     // Start the server only when MongoDB connection is successful
-    app.listen(8000, () => {
+    app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
