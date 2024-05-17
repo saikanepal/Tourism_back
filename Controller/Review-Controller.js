@@ -54,6 +54,7 @@ const getParticularReview = async (req, res) => {
         // if(!perPage){
         //     perPage=5;
         // }
+       
         const reqPage=parseInt(page)
         const reqPerPage=parseInt(perPage)
         const rating=await Rating.findOne({region})
