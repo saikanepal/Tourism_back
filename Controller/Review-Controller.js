@@ -3,7 +3,7 @@ const  Rating  = require("../models/ratingSchema.js");
 
 const getSomeReview = async (req, res) => {
     try{
-        const review=await Review.find().limit(5);
+        const review=await Review.find().sort({ createdAt: -1 }).limit(5).populate('rating','region');
         return res.status(201).json({review})
     }catch(err){
         console.log(err.message)
@@ -62,7 +62,8 @@ const getParticularReview = async (req, res) => {
         const startIndex=(reqPage-1)*reqPerPage;
         // const endIndex=startIndex+reqPerPage;
         // const resultData=review.slice(startIndex,endIndex);
-        const review=await Review.find({rating:rating._id}).skip(startIndex).limit(reqPerPage)
+        const review=await Review.find({rating:rating._id}).skip(startIndex).sort({ createdAt: -1 }).limit(reqPerPage)
+        console.log(review,"review")
         return res.status(201).json(review)
     } catch (err) {
         console.error(err.message);
