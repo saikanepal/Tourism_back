@@ -10,6 +10,7 @@ const ReviewRouter = require("./Routes/ReviewRoutes");
 const AdminRouter = require("./Routes/adminRoutes");
 const BookingRouter = require("./Routes/BookingRoutes");
 const ImageRouter = require("./Routes/ImageRoute");
+const GalleryRouter = require("./Routes/galleryRoutes");
 
 //Server configuratiion
 const app = express();
@@ -17,28 +18,17 @@ const PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 
 // MongoDB connection
-// mongoose
-//   .connect(process.env.DB_URL)
-//   .then(() => {
-//     console.log("MongoDB connected successfully");
-//     // Start the server only when MongoDB connection is successful
-//     app.listen(8000, () => {
-//       console.log(`Server is running on port ${PORT}`);
-//     });
-//   })
-//   .catch((error) => {
-//     console.error("MongoDB connection error:", error);
-//   });
-
 mongoose
-  .connect("mongodb://127.0.0.1:27017/trekking")
+  .connect(process.env.DB_URL)
   .then(() => {
     console.log("MongoDB connected successfully");
     // Start the server only when MongoDB connection is successful
-    app.listen(PORT, () => {
+    app.listen(8000, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
@@ -46,10 +36,24 @@ mongoose
     console.error("MongoDB connection error:", error);
   });
 
+// mongoose
+//   .connect("mongodb://127.0.0.1:27017/trekking")
+//   .then(() => {
+//     console.log("MongoDB connected successfully");
+//     // Start the server only when MongoDB connection is successful
+//     app.listen(PORT, () => {
+//       console.log(`Server is running on port ${PORT}`);
+//     });
+//   })
+//   .catch((error) => {
+//     console.error("MongoDB connection error:", error);
+//   });
+
 //routes here
 app.use("/api/review", ReviewRouter);
 app.use("/api/admin", AdminRouter);
 app.use("/api/booking", BookingRouter);
 app.use("/api/image", ImageRouter);
+app.use("/api/gallery", GalleryRouter);
 
 app.use("/api/sample", sampleRoute); // for a practical project would be more like , /api/user , /api/posts , /api/messages
