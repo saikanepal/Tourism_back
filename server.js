@@ -34,9 +34,9 @@ app.use(cors());
 //   });
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/trekking")
+  .connect(process.env.MONGO)
   .then(() => {
-    console.log("MongoDB connected successfully");
+    console.log(" My DB connected successfully");
     // Start the server only when MongoDB connection is successful
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
