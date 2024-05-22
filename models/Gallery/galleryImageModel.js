@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const galleryImageSchema = new Schema({
-    ImageUrl: { type: String },
+    imageUrl: { type: String },
     regionName: { type: String },
     description: { type: String }
 },

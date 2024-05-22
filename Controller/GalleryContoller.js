@@ -1,7 +1,6 @@
 const GalleryImage = require("../models/Gallery/galleryImageModel");
 const GalleryVideo = require("../models/Gallery/galleryVideoModel");
 
-
 // VIDEO SECTION 
 const postGalleryVideo = async (req, res) => {
     try {
@@ -17,8 +16,6 @@ const postGalleryVideo = async (req, res) => {
 };
 
 const getGalleryVideo = async (req, res) => {
-    console.log("first")
-    return
     try {
         const galleryVideoDetails = await GalleryVideo.find().sort({ createdAt: -1 })
 
