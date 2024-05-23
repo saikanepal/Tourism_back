@@ -16,14 +16,14 @@ cloudinary.config({
 // Upload and replace images
 const uploadImage = async (req, res) => {
   const { uploadedImages } = req.body;
-
+  console.log("req", req.body);
   try {
     // Fetch existing images from the database
     const existingImages = await Images.find({});
     const existingCount = existingImages.length;
 
     // Iterate over the uploadedImages to update or add images based on index
-    for (let index = 0; index < uploadedImages.length; index++) {
+    for (let index = 0; index < uploadedImages?.length; index++) {
       const image = uploadedImages[index];
 
       if (!image || !image.Picture || !image.Picture.id || !image.Picture.img) {

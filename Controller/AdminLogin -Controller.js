@@ -6,7 +6,7 @@ const adminLogin = async (req, res) => {
 
     const adminPassword = process.env.adminPassword || "admin";
 
-    if (email === adminEmail && password === adminPassword)
+    if (email == adminEmail && password == adminPassword)
       return res.status(200).send({
         message: "You are Successfully Logged in",
         email,
