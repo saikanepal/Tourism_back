@@ -2,8 +2,8 @@ const Booking = require("../models/bookingSchema");
 
 const postBookingDetails = async (req, res) => {
     try {
-        const { name, email, country, contactNumber, arrivalDate, departureDate, requirements } = req.body;
-        const newBooking = new Booking({ name, email, country, contactNumber, arrivalDate, departureDate, requirements })
+        const { name, email, country, contactNumber, arrivalDate, departureDate, requirements,Location } = req.body;
+        const newBooking = new Booking({ name, email, country, contactNumber, arrivalDate, departureDate, requirements,Location })
         await newBooking.save()
 
         res.status(200).json(newBooking);
