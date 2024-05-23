@@ -24,6 +24,10 @@ const adminLogin = async (req, res) => {
   }
 };
 
+const addImage = async (req, res) => {};
+
 module.exports = {
   adminLogin,
+  adminLogin,
+  addImage,
 };
