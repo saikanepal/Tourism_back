@@ -11,20 +11,22 @@ const AdminRouter = require("./Routes/adminRoutes");
 const BookingRouter = require("./Routes/BookingRoutes");
 const ImageRouter = require("./Routes/ImageRoute");
 const GalleryRouter = require("./Routes/galleryRoutes");
-
+const priceUpdateRoutes = require("./Routes/priceRoute");
 //Server configuratiion
 const app = express();
 const PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(express.json());
-app.use(cors({
-  origin: "*"
-}));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 // MongoDB connection
 mongoose
-  .connect(process.env.DB_URL)
+  .connect(process.env.MONGO)
   .then(() => {
     console.log("MongoDB connected successfully");
     // Start the server only when MongoDB connection is successful
@@ -55,5 +57,7 @@ app.use("/api/admin", AdminRouter);
 app.use("/api/booking", BookingRouter);
 app.use("/api/image", ImageRouter);
 app.use("/api/gallery", GalleryRouter);
+
+app.use("/api/price", priceUpdateRoutes);
 
 app.use("/api/sample", sampleRoute); // for a practical project would be more like , /api/user , /api/posts , /api/messages
