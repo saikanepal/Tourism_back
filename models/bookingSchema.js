@@ -8,7 +8,8 @@ const bookingSchema = new Schema({
     contactNumber: { type: Number },
     arrivalDate: { type: String, },
     departureDate: { type: String },
-    requirements: { type: String }
+    requirements: { type: String },
+    Location:{type:String},
 },
     {
         timestamps: true

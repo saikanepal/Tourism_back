@@ -57,6 +57,20 @@ const getGalleryImage = async (req, res) => {
     }
 };
 
+const getGallerySomeImage = async (req, res) => {
+    try {
+        const galleryImageDetails = await GalleryImage.find().limit(5).sort({ createdAt: -1 })
+
+        if (galleryImageDetails.length === 0)
+            return res.status(200).json({ galleryImageDetails, message: "No any Images to display" })
+
+        return res.status(201).json({ galleryImageDetails })
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Error in Getting particular booking details", error: err.message });
+    }
+};
+
 module.exports = {
-    postGalleryVideo, getGalleryVideo, postGalleryImage, getGalleryImage
+    postGalleryVideo, getGalleryVideo, postGalleryImage, getGalleryImage,getGallerySomeImage
 };
