@@ -1,6 +1,6 @@
 // const sampleController = require('../Controller/Sample-Controller');
 const express = require('express');
-const { postGalleryVideo, getGalleryVideo, postGalleryImage, getGalleryImage } = require('../Controller/GalleryContoller');
+const { postGalleryVideo, getGalleryVideo, postGalleryImage, getGalleryImage ,getGallerySomeImage} = require('../Controller/GalleryContoller');
 const GalleryRouter = express.Router();
 
 // VIDEOS
@@ -11,4 +11,5 @@ GalleryRouter.get('/getVideoDetails', getGalleryVideo);
 GalleryRouter.post('/postImageDetails', postGalleryImage);
 GalleryRouter.get('/getImageDetails', getGalleryImage);
 
+GalleryRouter.get('/getSomeImage', getGalleryImage);
 module.exports = GalleryRouter;
